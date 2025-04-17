@@ -230,3 +230,8 @@ footer {
   .cta-buttons button { margin: 10px; width: 100%; }
   .parceiros-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+h1{
+  color: wheat;
+  text-align: center;
+}
