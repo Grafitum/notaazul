@@ -2,282 +2,10 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Serviços Profissionaiss</title>
+  <title>Serviços Profissionais</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    /* Reset e Configurações Gerais */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Poppins', Arial, sans-serif;
-      background: linear-gradient(135deg, #f5f9ff 0%, #ffffff 100%);
-      color: #1a237e;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+  <link rel="stylesheet" href="style.css"> 
 
-    /* Navegação */
-    nav {
-      background: linear-gradient(90deg, #1565c0 60%, #42a5f5 100%);
-      box-shadow: 0 2px 8px rgba(21,101,192,0.08);
-      padding: 0 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav ul {
-      list-style: none;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-left, .nav-right {
-      display: flex;
-      align-items: center;
-    }
-
-    nav li {
-      margin: 0 15px;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 16px;
-      padding: 24px 0;
-      display: block;
-      transition: color 0.2s;
-      position: relative;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 20px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #fff;
-      transition: width 0.3s;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    .login-btn {
-      background: rgba(255,255,255,0.15);
-      padding: 8px 20px;
-      border-radius: 25px;
-      transition: background 0.3s;
-    }
-
-    .login-btn:hover {
-      background: rgba(255,255,255,0.25);
-    }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(120deg, #1976d2 60%, #90caf9 100%);
-      padding: 100px 20px 60px;
-      text-align: center;
-      color: #fff;
-      flex: 1;
-    }
-
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 20px;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      margin-bottom: 40px;
-      max-width: 800px;
-      margin: 0 auto 40px;
-      line-height: 1.6;
-    }
-
-    .cta-buttons {
-      margin-top: 40px;
-    }
-
-    .cta-buttons button {
-      background: rgba(255,255,255,0.15);
-      border: 2px solid rgba(255,255,255,0.3);
-      color: #fff;
-      padding: 12px 30px;
-      margin: 0 10px;
-      border-radius: 30px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .cta-buttons button.primary {
-      background: #fff;
-      color: #1976d2;
-    }
-
-    .cta-buttons button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 1001;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background: #fff;
-      padding: 40px;
-      border-radius: 15px;
-      width: 100%;
-      max-width: 400px;
-      position: relative;
-      animation: slideDown 0.4s;
-    }
-
-    @keyframes slideDown {
-      from { transform: translateY(-50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 24px;
-      cursor: pointer;
-      color: #666;
-    }
-
-    .modal-tabs {
-      display: flex;
-      margin-bottom: 30px;
-    }
-
-    .tab-btn {
-      flex: 1;
-      padding: 12px;
-      border: none;
-      background: #f5f5f5;
-      cursor: pointer;
-      font-weight: 600;
-      color: #666;
-      transition: all 0.3s;
-    }
-
-    .tab-btn.active {
-      background: #1976d2;
-      color: #fff;
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    .modal input, .modal textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 14px;
-    }
-
-    .modal button[type="submit"] {
-      width: 100%;
-      padding: 14px;
-      margin-top: 20px;
-      background: #1976d2;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .modal button[type="submit"]:hover {
-      background: #1565c0;
-    }
-
-    /* Footer */
-    footer {
-      background: #1a237e;
-      color: #fff;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .parceiros-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto 40px;
-    }
-
-    .parceiro-item {
-      padding: 20px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 10px;
-      transition: transform 0.3s;
-    }
-
-    .parceiro-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .parceiro-item img {
-      max-width: 100%;
-      height: 40px;
-      filter: brightness(0) invert(1);
-      margin-bottom: 10px;
-    }
-
-    .parceiro-item p {
-      font-size: 14px;
-      margin-top: 10px;
-      color: rgba(255,255,255,0.8);
-    }
-
-    /* Responsividade */
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2rem; }
-      .cta-buttons button { margin: 10px; width: 100%; }
-      .parceiros-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
 </head>
 <body>
   <!-- Navegação -->
@@ -289,7 +17,7 @@
         <li><a href="#sobre">Sobre</a></li>
       </div>
       <div class="nav-right">
-        <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="#portfolio">Fale com nossa equipe</a></li>
         <li><a href="#contato">Contato</a></li>
         <li><a href="#" class="login-btn" id="openModal">Entrar</a></li>
       </div>
@@ -298,7 +26,7 @@
 
   <!-- Hero Section -->
   <section class="hero" id="inicio">
-    <h1>Soluções Profissionais dee Alto Impacto</h1>
+    <h1>Soluções Profissionais de Alto Impacto</h1>
     <p>Conectamos sua empresa às melhores soluções do mercado com parcerias estratégicas e tecnologia de ponta.</p>
     
     <div class="cta-buttons">
@@ -316,29 +44,12 @@
         <button class="tab-btn" data-tab="cadastro">Cadastrar</button>
       </div>
 
-      <div class="tab-content active" id="login">
-        <form>
-          <input type="email" placeholder="E-mail" required>
-          <input type="password" placeholder="Senha" required>
-          <button type="submit">Acessar Conta</button>
-        </form>
-      </div>
-
-      <div class="tab-content" id="cadastro">
-        <form>
-          <input type="text" placeholder="Nome Completo" required>
-          <input type="email" placeholder="E-mail" required>
-          <input type="password" placeholder="Crie uma Senha" required>
-          <button type="submit">Criar Conta</button>
-        </form>
-      </div>
-    </div>
-  </div>
+      
 
   <!-- Footer com Parceiros -->
   <footer>
     <h2>Nossos Parceiros e Empresas Conveniadas</h2>
-    
+
     <div class="parceiros-grid">
       <div class="parceiro-item">
         <img src="https://via.placeholder.com/150x40.png?text=Parceiro+1" alt="Parceiro 1">
